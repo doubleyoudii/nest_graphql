@@ -14,5 +14,4 @@ export class CreateLessonInput {
   @IsDateString()
   @Field()
   endDate: string;
-
 }
