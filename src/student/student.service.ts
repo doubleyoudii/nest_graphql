@@ -1,4 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Student } from './student.entity';
 
 @Injectable()
-export class StudentService {}
+export class StudentService {
+  constructor(
+    @InjectRepository(Student)
+    private studentService: Repository<Student>,
+  ) {}
+}
