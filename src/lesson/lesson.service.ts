@@ -12,6 +12,11 @@ export class LessonService {
     private lessonRepository: Repository<Lesson>,
   ) {}
 
+  async getLessonById(id: string): Promise<Lesson> {
+    const lesson = await this.lessonRepository.findOne({ where: { id } });
+    return lesson;
+  }
+
   async createLesson(createLesson: CreateLessonDto): Promise<Lesson> {
     const { name, startDate, endDate } = createLesson;
     const lesson = this.lessonRepository.create({
