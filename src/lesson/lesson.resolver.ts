@@ -1,4 +1,5 @@
 import { Resolver, Query, Mutation, Args, ID } from '@nestjs/graphql';
+import { AssignStudentInput } from './input/assign-student.input';
 import { CreateLessonInput } from './input/create-lesson.input';
 import { LessonService } from './lesson.service';
 import { LessonType } from './lesson.type';
@@ -19,5 +20,12 @@ export class LessonResolver {
   @Mutation((returns) => LessonType)
   createLesson(@Args('lessonCreate') lessonCreate: CreateLessonInput) {
     return this.lessonService.createLesson(lessonCreate);
+  }
+
+  @Mutation((returns) => LessonType)
+  assignedStudentsToLesson(
+    @Args('studentAssign') studentAssign: AssignStudentInput,
+  ) {
+    return this.lessonService.assignedStudentToLesson(studentAssign);
   }
 }
