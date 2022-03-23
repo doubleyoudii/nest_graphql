@@ -33,4 +33,16 @@ export class StudentService {
     });
     return await this.studentRepository.save(student);
   }
+
+  async findStudents(studentIds: string[]): Promise<Student[]> {
+    // const studentsArr: Student[] = await this.studentRepository.find({
+    //   where: {
+    //     id: {
+    //       $in: studentIds,
+    //     },
+    //   },
+    // });
+    const studentsArr: Student[] = await this.studentRepository.find({});
+    return studentsArr;
+  }
 }
